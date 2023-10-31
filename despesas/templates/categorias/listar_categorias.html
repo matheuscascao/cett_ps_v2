@@ -2,21 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>List of Categories</title>
+    <title>Lista de categorias</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>List of Categories</h1>
-    
-    <a href="{% url 'criar_categoria' %}">Create New Category</a>
-    
-    <ul>
-        {% for categoria in categorias %}
-        <li>
-            {{ categoria.nome }}
-            <a href="{% url 'editar_categoria' categoria.id %}">Edit</a>
-            <a href="{% url 'excluir_categoria' categoria.id %}">Delete</a>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h1 class="mt-5">Lista de categorias</h1>
+        
+        <a href="{% url 'criar_categoria' %}" class="btn btn-primary mb-3">Criar nova categoria</a>
+        
+        <ul class="list-group">
+            {% for categoria in categorias %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ categoria.nome }}
+                <div class="btn-group" role="group">
+                    <a href="{% url 'editar_categoria' categoria.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'excluir_categoria' categoria.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

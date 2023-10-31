@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Expense</title>
+    <title>Criar Despesa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Create Expense</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
-    <a href="{% url 'listar_despesas' %}">Back to List</a>
+    <div class="container">
+        <h1 class="mt-5">Criar Despesa</h1>
+        <form method="post" class="mt-3">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+        <a href="{% url 'listar_despesas' %}" class="btn btn-secondary mt-3">Voltar</a>
+    </div>
 </body>
 </html>
