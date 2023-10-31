@@ -1,10 +1,15 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from . import views
+from . import views_api
 
 router = DefaultRouter()
-router.register(r'api/despesas', views.DespesaViewSet)
-router.register(r'api/categorias', views.CategoriaViewSet)
+router.register(r'api/despesas', views_api.DespesaViewSet)
+# router.register(r'api/categorias', views_api.CategoriaViewSet)
+# router.register(r'api/filtrar/periodo/', views.DespesaPeriodoViewSet)
+# router.register(r'api/filtrar/categoria/', views.DespesaCategoriaViewSet)
+# router.register(r'api/filtrar/categoria/', views.DespesaCategoriaViewSet)
+# router.register(r'api/despesas/criar/', views.CriarDespesaViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

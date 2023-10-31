@@ -1,9 +1,10 @@
 from django.shortcuts import render
-
 from django.shortcuts import render, redirect
+from rest_framework import viewsets
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .models import Despesa, Categoria
 from .forms import DespesaForm, CategoriaForm
-from rest_framework import viewsets
 from .models import Despesa, Categoria
 from .serializers import DespesaSerializer, CategoriaSerializer
 
@@ -11,7 +12,7 @@ def listar_despesas(request):
     despesas = Despesa.objects.all()
     return render(request, 'despesas/listar_despesas.html', {'despesas': despesas})
 
-def filtrar_despesas_periodo(request):
+def filtrar_despesas_periodo(request): 
     data_inicio = request.GET.get('data_inicio', None)
     data_fim = request.GET.get('data_fim', None)
 
@@ -92,13 +93,27 @@ def excluir_categoria(request, categoria_id):
     categoria.delete()
     return redirect('listar_categorias')
 
+# class DespesaViewSet(viewsets.ModelViewSet):
+#     queryset = Despesa.objects.all()
+#     serializer_class = DespesaSerializer
 
+#     def get_queryset(self):
+#         queryset = super().get_queryset()
+#         id_param = self.request.query_params.get('id')
+#         categoria_param = self.request.query_params.get('categoria')
+#         start_date_param = self.request.query_params.get('start_date')
+#         end_date_param = self.request.query_params.get('end_date')
 
-class DespesaViewSet(viewsets.ModelViewSet):
-    queryset = Despesa.objects.all()
-    serializer_class = DespesaSerializer
+#         if id_param:
+#             queryset = queryset.filter(id=id_param)
+#         if categoria_param:
+#             queryset = queryset.filter(categoria__nome=categoria_param)
+
+#         if start_date_param and end_date_param:
+#             queryset = queryset.filter(data__range=(start_date_param, end_date_param))
+
+#         return queryset
 
 class CategoriaViewSet(viewsets.ModelViewSet):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
-
