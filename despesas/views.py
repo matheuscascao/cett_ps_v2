@@ -3,6 +3,9 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from .models import Despesa, Categoria
 from .forms import DespesaForm, CategoriaForm
+from rest_framework import viewsets
+from .models import Despesa, Categoria
+from .serializers import DespesaSerializer, CategoriaSerializer
 
 def listar_despesas(request):
     despesas = Despesa.objects.all()
@@ -89,3 +92,12 @@ def excluir_categoria(request, categoria_id):
     categoria.delete()
     return redirect('listar_categorias')
 
+
+
+class DespesaViewSet(viewsets.ModelViewSet):
+    queryset = Despesa.objects.all()
+    serializer_class = DespesaSerializer
+
+class CategoriaViewSet(viewsets.ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
