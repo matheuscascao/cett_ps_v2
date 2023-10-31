@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Lista de Despesas</title>
@@ -10,6 +10,7 @@
         <h1 class="mb-4">Lista de Despesas</h1>
         
         <a class="btn btn-primary mb-3" href="{% url 'criar_despesa' %}">Criar nova despesa</a>
+        <a class="btn btn-primary mb-3" href="{% url 'listar_categorias' %}">Ir para Categorias</a>
 
         <form method="get" action="{% url 'filtrar_despesas_categoria' %}">
             <div class="form-group">

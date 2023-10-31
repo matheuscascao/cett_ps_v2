@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Lista de categorias</title>
@@ -10,6 +10,7 @@
         <h1 class="mt-5">Lista de categorias</h1>
         
         <a href="{% url 'criar_categoria' %}" class="btn btn-primary mb-3">Criar nova categoria</a>
+        <a class="btn btn-primary mb-3" href="{% url 'listar_despesas' %}">Voltar para despesas</a>
         
         <ul class="list-group">
             {% for categoria in categorias %}
