@@ -5,7 +5,7 @@ from . import views_api
 
 router = DefaultRouter()
 router.register(r'api/despesas', views_api.DespesaViewSet)
-# router.register(r'api/categorias', views_api.CategoriaViewSet)
+router.register(r'api/categorias', views_api.CategoriaViewSet)
 # router.register(r'api/filtrar/periodo/', views.DespesaPeriodoViewSet)
 # router.register(r'api/filtrar/categoria/', views.DespesaCategoriaViewSet)
 # router.register(r'api/filtrar/categoria/', views.DespesaCategoriaViewSet)

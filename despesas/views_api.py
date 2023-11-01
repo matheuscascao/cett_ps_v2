@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from .models import Despesa, Categoria
 from .forms import DespesaForm, CategoriaForm
 from .models import Despesa, Categoria
-from .serializers import DespesaSerializer
+from .serializers import DespesaSerializer, CategoriaSerializer
 
 class DespesaViewSet(viewsets.ModelViewSet):
     queryset = Despesa.objects.all()
@@ -26,5 +26,18 @@ class DespesaViewSet(viewsets.ModelViewSet):
 
         if start_date_param and end_date_param:
             queryset = queryset.filter(data__range=(start_date_param, end_date_param))
+
+        return queryset
+    
+class CategoriaViewSet(viewsets.ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        id_param = self.request.query_params.get('id')
+
+        if id_param:
+            queryset = queryset.filter(id=id_param)
 
         return queryset
