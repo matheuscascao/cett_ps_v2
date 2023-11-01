@@ -17,25 +17,25 @@ This is a Django project for managing your expenses with a REST API and a web in
 ## Installation
 
 1. Clone the repository:
-   # git clone https://github.com/yourusername/my-django-project.git
+   `git clone https://github.com/yourusername/my-django-project.git`
 
 2. Create a virtual environment and activate it:
-    # python3 -m venv venv
-    # source venv/bin/activate  # On Windows: venv\Scripts\activate
+    `python3 -m venv venv`
+    `source venv/bin/activate  # On Windows: venv\Scripts\activate`
 
 3. Install project dependencies:
-    # pip install -r requirements.txt
+    `pip install -r requirements.txt`
 
 4. Run the migrations:
-    # python manage.py migrate
+    `python manage.py migrate`
 
 5. Start the development server:
-    # python manage.py runserver
+    `python manage.py runserver`
 
 Open your web browser and access the application at http://localhost:8000.
 
 ## API Endpoints:
-    # List Expenses: /api/despesas/
-    # List Categories: /api/categorias/
+    `List Expenses: /api/despesas/`
+    `List Categories: /api/categorias/`
 
 For more details on available API endpoints, refer to the project's documentation.
