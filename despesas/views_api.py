@@ -1,10 +1,6 @@
-from django.shortcuts import render
-from django.shortcuts import render, redirect
-from rest_framework import viewsets
-from rest_framework.views import APIView
+from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .models import Despesa, Categoria
-from .forms import DespesaForm, CategoriaForm
 from .models import Despesa, Categoria
 from .serializers import DespesaSerializer, CategoriaSerializer
 
@@ -13,6 +9,7 @@ class DespesaViewSet(viewsets.ModelViewSet):
     serializer_class = DespesaSerializer
 
     def get_queryset(self):
+        print("code reached - queryset")
         queryset = super().get_queryset()
         id_param = self.request.query_params.get('id')
         categoria_param = self.request.query_params.get('categoria')
@@ -29,11 +26,21 @@ class DespesaViewSet(viewsets.ModelViewSet):
 
         return queryset
     
+    def destroy(self, request, *args, **kwargs):
+        print("code reached - destroyed")
+        try:
+            instance = self.get_object()
+            self.perform_destroy(instance)
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Despesa.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    
 class CategoriaViewSet(viewsets.ModelViewSet):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
 
     def get_queryset(self):
+        print("code reached - queryset")
         queryset = super().get_queryset()
         id_param = self.request.query_params.get('id')
 
@@ -41,3 +48,12 @@ class CategoriaViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(id=id_param)
 
         return queryset
+    
+    def destroy(self, request, *args, **kwargs):
+        print("code reached - destroyed")
+        try:
+            instance = self.get_object()
+            self.perform_destroy(instance)
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Categoria.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
