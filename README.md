@@ -1,4 +1,4 @@
-# My Django Project
+# Expenses - Project for Cett-UFG
 
 This is a Django project for managing your expenses with a REST API and a web interface.
 
@@ -35,7 +35,7 @@ This is a Django project for managing your expenses with a REST API and a web in
 Open your web browser and access the application at http://localhost:8000.
 
 ## API Endpoints:
-    `List Expenses: /api/despesas/`
-    `List Categories: /api/categorias/`
+    List Expenses: /api/despesas/
+    List Categories: /api/categorias/
 
 For more details on available API endpoints, refer to the project's documentation.
